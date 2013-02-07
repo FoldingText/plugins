@@ -9,9 +9,11 @@ define(function(require, exports, module) {
 			treeModel.beginUpdates();
 			
 			if (emptyLines.count > 0) {
-				treeModel.removeNodes(emptyLines.nodesInLineOrder());
+				if (treeModel.linesLength() > emptyLines.count) {
+					treeModel.removeNodes(emptyLines.nodesInLineOrder());					
+				}
 			} else {
-				var each = treeModel.lineToNode(1);
+				var each = treeModel.lineNumberToNode(1);
 				while (each) {
 					treeModel.insertNodeBefore(treeModel.createNode(''), each);
 					each = each.nextLineNode();					
