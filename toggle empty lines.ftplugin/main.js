@@ -3,7 +3,7 @@ define(function(require, exports, module) {
 		editor.treeController.addCommand('toggle empty lines', 'Toggle between no empty lines and every other line empty.', function(treeController) {
 			var treeModel = treeController.treeModel,
 				undoManager = treeController.undoManager,
-				emptyLines = treeModel.evaluateNodePath('@type empty');
+				emptyLines = treeModel.evaluateNodePath('//@type empty');
 											
 			undoManager.beginUndoGrouping();
 			treeModel.beginUpdates();
