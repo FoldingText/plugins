@@ -1,4 +1,0 @@
-plugins
-=======
-
-FoldingText plugins
