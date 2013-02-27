@@ -1,7 +1,7 @@
 define(function(require, exports, module) {
 	exports.editorDidLoad = function editorDidLoad(editor) {
 		
-		editor.treeController.addCommand('sort', 'Sort the selected lines of text.', function(treeController) {
+		editor.treeController.addCommand('sort lines', 'Sort the selected lines of text.', function(treeController) {
 			var treeView = treeController.treeView,
 				treeModel = treeController.treeModel,
 				selectedRange = treeView.selectedRange(),

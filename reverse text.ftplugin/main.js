@@ -1,7 +1,7 @@
 define(function(require, exports, module) {
 	exports.editorDidLoad = function editorDidLoad(editor) {
 		
-		editor.treeController.addCommand('reverse', 'Reverse the selected text.', function(treeController) {
+		editor.treeController.addCommand('reverse text', 'Reverse the selected text.', function(treeController) {
 			var treeView = treeController.treeView,
 				treeModel = treeController.treeModel,
 				selectedRange = treeView.selectedRange(),
