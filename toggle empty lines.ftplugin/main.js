@@ -1,28 +1,24 @@
 define(function(require, exports, module) {
-	exports.editorDidLoad = function editorDidLoad(editor) {
-		editor.treeController.addCommand('toggle empty lines', 'Toggle between no empty lines and every other line empty.', function(treeController) {
-			var treeModel = treeController.treeModel,
-				undoManager = treeController.undoManager,
-				emptyLines = treeModel.evaluateNodePath('//@type empty');
-											
-			undoManager.beginUndoGrouping();
-			treeModel.beginUpdates();
-			
-			if (emptyLines.count > 0) {
-				if (treeModel.linesLength() > emptyLines.count) {
-					treeModel.removeNodes(emptyLines.nodesInLineOrder());					
-				}
+	Extensions = require('ft/core/extensions');
+
+	Extensions.add('com.foldingtext.editor.commands', {
+		name: 'toggle empty lines',
+		description: 'Toggle between no empty lines and every other line empty.',
+		performCommand: function (editor) {
+			var tree = editor.tree(),
+				emptyLines = tree.evaluateNodePath('//@type empty');
+
+			tree.beginUpdates();
+			if (emptyLines.length > 0) {
+				tree.removeNodes(emptyLines);
 			} else {
-				var each = treeModel.lineNumberToNode(1);
+				var each = tree.firstLineNode();
 				while (each) {
-					treeModel.insertNodeBefore(treeModel.createNode(''), each);
-					each = each.nextLineNode();					
-				}				
+					tree.insertNodeBefore(tree.createNode(''), each);
+					each = each.nextLineNode();
+				}
 			}
-			
-			treeModel.endUpdates();
-			undoManager.endUndoGrouping();
-			undoManager.setActionName("Toggle Empty Lines");
-		});
-	};
+			tree.endUpdates();
+		}
+	});
 });

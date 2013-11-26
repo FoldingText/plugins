@@ -1,20 +1,13 @@
 define(function(require, exports, module) {
-	exports.editorDidLoad = function editorDidLoad(editor) {
-		
-		editor.treeController.addCommand('sort lines', 'Sort the selected lines of text.', function(treeController) {
-			var treeView = treeController.treeView,
-				treeModel = treeController.treeModel,
-				selectedRange = treeView.selectedRange(),
-				selectedParagraphRange = selectedRange.rangeByExtendingToParagraph(),
-				selectionLocation = selectedParagraphRange.location(),
-				sortedText = selectedParagraphRange.linesInRange().sort().join('\n');
-			
-			treeView.beginUpdates();
-			treeModel.replaceTextInRange(sortedText, selectedParagraphRange);
-			treeView.setSelectedRange(treeModel.createRangeFromLocation(selectionLocation, sortedText.length));
-			treeController.undoManager.setActionName("Sort");
-			treeView.endUpdates();
-		});
-		
-	};
+	Extensions = require('ft/core/extensions');
+
+	Extensions.add('com.foldingtext.editor.commands', {
+		name: 'sort lines',
+		description: 'Sort the selected lines of text.',
+		performCommand: function (editor) {
+			var text = editor.selectedText(),
+				sortedText = text.split('\n').sort().join('\n');
+			editor.replaceSelection(sortedText);
+		}
+	});
 });

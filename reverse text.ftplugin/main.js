@@ -1,20 +1,13 @@
 define(function(require, exports, module) {
-	exports.editorDidLoad = function editorDidLoad(editor) {
-		
-		editor.treeController.addCommand('reverse text', 'Reverse the selected text.', function(treeController) {
-			var treeView = treeController.treeView,
-				treeModel = treeController.treeModel,
-				selectedRange = treeView.selectedRange(),
-				selectionLocation = selectedRange.location(),
-				selectedText = selectedRange.textInRange(),
-				reversedText = selectedText.split("").reverse().join("");
+	Extensions = require('ft/core/extensions');
 
-			treeView.beginUpdates();
-			treeModel.replaceTextInRange(reversedText, selectedRange);
-			treeView.setSelectedRange(treeModel.createRangeFromLocation(selectionLocation, reversedText.length));
-			treeController.undoManager.setActionName("Reverse");
-			treeView.endUpdates();
-		});
-		
-	};
+	Extensions.add('com.foldingtext.editor.commands', {
+		name: 'reverse',
+		description: 'Reverse the selected text.',
+		performCommand: function (editor) {
+			var text = editor.selectedText(),
+				reverseText = text.split('').reverse().join('');
+			editor.replaceSelection(reverseText);
+		}
+	});
 });

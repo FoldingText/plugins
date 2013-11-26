@@ -2,32 +2,25 @@
 // This plugin is in response to http://support.foldingtext.com/discussions/suggestions/834-frq-transformations-make-sentence-case
 //
 define(function(require, exports, module) {
-	exports.editorDidLoad = function editorDidLoad(editor) {
-		
-		editor.treeController.addCommand('capitalize lists', 'Capitalize the first character in each selected list item.', function(treeController) {
-			var treeView = treeController.treeView,
-				treeModel = treeController.treeModel,
-				undoManager = treeController.undoManager,
-				selectedRange = treeView.selectedRange(),
-				selectedNodes = selectedRange.nodesInRange(),
-				length = selectedNodes.length;
+	Extensions = require('ft/core/extensions');
 
-			undoManager.beginUndoGrouping();
-			treeView.beginUpdates();
+	Extensions.add('com.foldingtext.editor.commands', {
+		name: 'capitalize lists',
+		description: 'Capitalize the first character in each selected list item.',
+		performCommand: function (editor) {
+			var range = editor.getSelectedRange(),
+				tree = editor.tree(),
+				type, text;
 
-			for (var i = 0; i < length; i++) {
-				var each = selectedNodes[i];
-				var type = each.type();
+			tree.beginUpdates();
+			range.forEachLineInRange(function (node) {
+				type = node.type();
 				if (type === 'ordered' || type === 'unordered')	{
-					var text = each.text();
-					each.setText(text.charAt(0).toUpperCase() + text.slice(1));
+					text = node.text();
+					node.setText(text.charAt(0).toUpperCase() + text.slice(1));
 				}
-			}
-			
-			treeView.endUpdates();
-			undoManager.endUndoGrouping();
-			undoManager.setActionName("Sort");
-		});
-		
-	};
+			});
+			tree.endUpdates();
+		}
+	});
 });
