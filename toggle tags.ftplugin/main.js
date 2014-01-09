@@ -1,7 +1,8 @@
 define(function(require, exports, module) {
-	Extensions = require('ft/core/extensions');
+	Extensions = require('ft/core/extensions'),
+	DateUtils = require('ft/util/date');
 
-	function toggleTag(editor, tagName) {
+	function toggleTag(editor, tagName, tagValue) {
 		var tree = editor.tree(),
 			range = editor.getSelectedRange(),
 			addTag;
@@ -13,7 +14,7 @@ define(function(require, exports, module) {
 			}
 
 			if (addTag) {
-				node.addTag(tagName);
+				node.addTag(tagName, tagValue);
 			} else {
 				node.removeTag(tagName);
 			}
@@ -25,7 +26,7 @@ define(function(require, exports, module) {
 		name: 'done',
 		description: 'Toggle @done tag for selected lines.',
 		performCommand: function (editor) {
-			toggleTag(editor, 'done');
+			toggleTag(editor, 'done', new Date().format('isoDate'));
 		}
 	});
 
@@ -35,5 +36,12 @@ define(function(require, exports, module) {
 		performCommand: function (editor) {
 			toggleTag(editor, 'today');
 		}
+	});
+
+	Extensions.add('com.foldingtext.editor.init', function (editor) {
+		editor.addKeyMap({
+			'Cmd-D' : 'done',
+			'Cmd-T' : 'today',
+		});
 	});
 });
