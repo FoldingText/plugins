@@ -1,10 +1,12 @@
 define(function(require, exports, module) {
-	Extensions = require('ft/core/extensions'),
-	DateUtils = require('ft/util/date');
+	'use strict';
+
+	var Extensions = require('ft/core/extensions'),
+		DateUtils = require('ft/util/date');
 
 	function toggleTag(editor, tagName, tagValue) {
 		var tree = editor.tree(),
-			range = editor.getSelectedRange(),
+			range = editor.selectedRange(),
 			addTag;
 
 		tree.beginUpdates();

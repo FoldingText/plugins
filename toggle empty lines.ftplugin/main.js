@@ -11,8 +11,8 @@ define(function(require, exports, module) {
 			tree.beginUpdates();
 			if (emptyLines.length > 0) {
 				tree.removeNodes(emptyLines);
-			} else {
-				var each = tree.firstLineNode();
+			} else if (tree.linesLength() > 1) {
+				var each = tree.firstLineNode().nextLineNode();
 				while (each) {
 					tree.insertNodeBefore(tree.createNode(''), each);
 					each = each.nextLineNode();
