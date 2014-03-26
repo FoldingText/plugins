@@ -1,8 +1,8 @@
 define(function (require) {
 	'use strict';
 
-	describe('Date and time', function () {
-		var Editor = require('ft/core/editor').Editor,
+	describe('Sort Lines', function () {
+		var Editor = require('ft/editor/editor').Editor,
 			editor;
 
 		beforeEach(function () {
@@ -14,7 +14,7 @@ define(function (require) {
 		});
 
 		it('should sort selected text line', function () {
-			editor.replaceSelection('c\na\nb');
+			editor.replaceSelection('c\na\nb', 'around');
 			editor.performCommand('sort lines');
 			expect(editor.textContent()).toEqual('a\nb\nc');
 		});

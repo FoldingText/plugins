@@ -7,7 +7,7 @@ define(function(require, exports, module) {
 		performCommand: function (editor) {
 			var text = editor.selectedText(),
 				reverseText = text.split('').reverse().join('');
-			editor.replaceSelection(reverseText);
+			editor.replaceSelection(reverseText, 'around');
 		}
 	});
 });

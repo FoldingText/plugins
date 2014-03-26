@@ -8,7 +8,7 @@ define(function(require, exports, module) {
 		name: 'date',
 		description: 'Insert the current date',
 		performCommand: function (editor) {
-			editor.replaceSelection(new Date().format('mediumDate'));
+			editor.replaceSelection(new Date().format('mediumDate'), 'around');
 		}
 	});
 
@@ -16,7 +16,7 @@ define(function(require, exports, module) {
 		name: 'time',
 		description: 'Insert the current time',
 		performCommand: function (editor) {
-			editor.replaceSelection(new Date().format('shortTime'));
+			editor.replaceSelection(new Date().format('shortTime'), 'around');
 		}
 	});
 

@@ -14,7 +14,7 @@ define(function (require) {
 		});
 
 		it('should reverse selected text', function () {
-			editor.replaceSelection('hello world!');
+			editor.replaceSelection('hello world!', 'around');
 			editor.performCommand('reverse');
 			expect(editor.textContent()).toEqual('!dlrow olleh');
 		});

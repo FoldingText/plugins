@@ -7,7 +7,7 @@ define(function(require, exports, module) {
 		performCommand: function (editor) {
 			var text = editor.selectedText(),
 				sortedText = text.split('\n').sort().join('\n');
-			editor.replaceSelection(sortedText);
+			editor.replaceSelection(sortedText, 'around');
 		}
 	});
 });

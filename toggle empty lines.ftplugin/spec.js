@@ -22,7 +22,7 @@ define(function (require) {
 		});
 
 		it('should toggle empty lines', function () {
-			editor.replaceSelection('a\nb\nc');
+			editor.replaceSelection('a\nb\nc', 'around');
 			editor.performCommand('toggle empty lines');
 			expect(editor.textContent()).toEqual('a\n\nb\n\nc');
 			editor.performCommand('toggle empty lines');
