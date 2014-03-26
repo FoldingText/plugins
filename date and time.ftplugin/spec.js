@@ -2,7 +2,7 @@ define(function (require) {
 	'use strict';
 
 	describe('Date and time', function () {
-		var Editor = require('ft/core/editor').Editor,
+		var Editor = require('ft/editor/editor').Editor,
 			editor;
 
 		beforeEach(function () {

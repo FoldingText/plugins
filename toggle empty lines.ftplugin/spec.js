@@ -1,10 +1,10 @@
 define(function (require) {
 	'use strict';
 
-	describe('Date and time', function () {
+	describe('Toggle Empty Lines', function () {
 		var MarkdownTaxonomy = require('ft/taxonomy/markdowntaxonomy').MarkdownTaxonomy,
 			Taxonomies = require('ft/core/taxonomies'),
-			Editor = require('ft/core/editor').Editor,
+			Editor = require('ft/editor/editor').Editor,
 			taxonomy = Taxonomies.taxonomy({
 				foldingtext: true,
 				multimarkdown: true,

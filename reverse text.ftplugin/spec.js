@@ -1,8 +1,8 @@
 define(function (require) {
 	'use strict';
 
-	describe('Date and time', function () {
-		var Editor = require('ft/core/editor').Editor,
+	describe('Reverse Text', function () {
+		var Editor = require('ft/editor/editor').Editor,
 			editor;
 
 		beforeEach(function () {
