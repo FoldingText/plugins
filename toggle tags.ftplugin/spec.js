@@ -23,9 +23,9 @@ define(function (require) {
 
 		it('should toggle tags', function () {
 			editor.setTextContent('hello');
-			editor.performCommand('today');
+			editor.performCommand('toggleToday');
 			expect(editor.textContent()).toEqual('hello @today');
-			editor.performCommand('today');
+			editor.performCommand('toggleToday');
 			expect(editor.textContent()).toEqual('hello');
 		});
 	});

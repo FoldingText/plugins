@@ -25,7 +25,7 @@ define(function(require, exports, module) {
 	}
 
 	Extensions.add('com.foldingtext.editor.commands', {
-		name: 'done',
+		name: 'toggleDone',
 		description: 'Toggle @done tag for selected lines.',
 		performCommand: function (editor) {
 			toggleTag(editor, 'done', new Date().format('isoDate'));
@@ -33,7 +33,7 @@ define(function(require, exports, module) {
 	});
 
 	Extensions.add('com.foldingtext.editor.commands', {
-		name: 'today',
+		name: 'toggleToday',
 		description: 'Toggle @today tag for selected lines.',
 		performCommand: function (editor) {
 			toggleTag(editor, 'today');
@@ -42,8 +42,8 @@ define(function(require, exports, module) {
 
 	Extensions.add('com.foldingtext.editor.init', function (editor) {
 		editor.addKeyMap({
-			'Cmd-D' : 'done',
-			'Cmd-T' : 'today',
+			'Cmd-D' : 'toggleDone',
+			'Cmd-T' : 'toggleToday',
 		});
 	});
 });
