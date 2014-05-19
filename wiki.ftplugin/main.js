@@ -4,7 +4,7 @@
 define(function(require, exports, module) {
 	'use strict';
 
-	var Extensions = require('ft/core/extensions').Extensions,
+	var Extensions = require('ft/core/extensions'),
 		wikiLinkRE = /\[\[(.*?)\]\]/g;
 
 	Extensions.add('com.foldingtext.taxonomy.classifier', {

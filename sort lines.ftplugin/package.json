@@ -1,0 +1,10 @@
+{
+  "name": "Sort Lines",
+  "version": "1.0.0",
+  "description": "Adds command to sort the selected lines. See Edit > Run Command…",
+  "homepage": "https://github.com/FoldingText/plugins/tree/FoldingText-Dev",
+  "engines": {
+    "foldingtext": ">2.0.0",
+    "taskpaper": ">3.0.0"
+  }
+}

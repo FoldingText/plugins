@@ -1,7 +1,7 @@
 define(function(require, exports, module) {
-	Extensions = require('ft/core/extensions');
+	var Extensions = require('ft/core/extensions').Extensions;
 
-	Extensions.add('com.foldingtext.editor.commands', {
+	Extensions.addCommand({
 		name: 'sort lines',
 		description: 'Sort the selected lines of text.',
 		performCommand: function (editor) {

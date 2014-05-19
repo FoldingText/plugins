@@ -1,7 +1,7 @@
 define(function(require, exports, module) {
-	Extensions = require('ft/core/extensions');
+	var Extensions = require('ft/core/extensions').Extensions;
 
-	Extensions.add('com.foldingtext.editor.commands', {
+	Extensions.addCommand({
 		name: 'toggle empty lines',
 		description: 'Toggle between no empty lines and every other line empty.',
 		performCommand: function (editor) {
@@ -11,7 +11,7 @@ define(function(require, exports, module) {
 			tree.beginUpdates();
 			if (emptyLines.length > 0) {
 				tree.removeNodes(emptyLines);
-			} else if (tree.linesLength() > 1) {
+			} else if (tree.nodeCount() > 1) {
 				var each = tree.firstLineNode().nextLineNode();
 				while (each) {
 					tree.insertNodeBefore(tree.createNode(''), each);

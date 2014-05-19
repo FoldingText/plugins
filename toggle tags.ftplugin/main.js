@@ -1,7 +1,7 @@
 define(function(require, exports, module) {
 	'use strict';
 
-	var Extensions = require('ft/core/extensions'),
+	var Extensions = require('ft/core/extensions').Extensions,
 		DateUtils = require('ft/util/date');
 
 	function toggleTag(editor, tagName, tagValue) {
@@ -10,7 +10,7 @@ define(function(require, exports, module) {
 			addTag;
 
 		tree.beginUpdates();
-		range.forEachLineInRange(function (node) {
+		range.forEachNodeInRange(function (node) {
 			if (addTag === undefined) {
 				addTag = node.tag(tagName) === undefined ? true : false;
 			}
@@ -24,7 +24,7 @@ define(function(require, exports, module) {
 		tree.endUpdates();
 	}
 
-	Extensions.add('com.foldingtext.editor.commands', {
+	Extensions.addCommand({
 		name: 'toggleDone',
 		description: 'Toggle @done tag for selected lines.',
 		performCommand: function (editor) {
@@ -32,7 +32,7 @@ define(function(require, exports, module) {
 		}
 	});
 
-	Extensions.add('com.foldingtext.editor.commands', {
+	Extensions.addCommand({
 		name: 'toggleToday',
 		description: 'Toggle @today tag for selected lines.',
 		performCommand: function (editor) {
@@ -40,7 +40,7 @@ define(function(require, exports, module) {
 		}
 	});
 
-	Extensions.add('com.foldingtext.editor.init', function (editor) {
+	Extensions.addInit(function (editor) {
 		editor.addKeyMap({
 			'Cmd-D' : 'toggleDone',
 			'Cmd-T' : 'toggleToday',

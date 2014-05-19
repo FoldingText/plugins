@@ -1,7 +1,7 @@
 define(function(require, exports, module) {
-	Extensions = require('ft/core/extensions');
+	var Extensions = require('ft/core/extensions').Extensions;
 
-	Extensions.add('com.foldingtext.editor.commands', {
+	Extensions.addCommand({
 		name: 'reverse',
 		description: 'Reverse the selected text.',
 		performCommand: function (editor) {

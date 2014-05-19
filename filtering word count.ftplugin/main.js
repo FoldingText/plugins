@@ -9,7 +9,7 @@
 define(function(require, exports, module) {
 	'use strict';
 
-	var Extensions = require('ft/core/extensions'),
+	var Extensions = require('ft/core/extensions').Extensions,
 		nodeIDsToLastCount = {},
 		totalWordCount = 0;
 
@@ -25,7 +25,7 @@ define(function(require, exports, module) {
 		return newWordCount;
 	}
 
-	Extensions.add('com.foldingtext.editor.init', function (editor) {
+	Extensions.addInit(function (editor) {
 		var each = editor.tree().firstLineNode();
 		while (each) {
 			totalWordCount += updateAndReturnWordCountForNode(each);
@@ -33,7 +33,7 @@ define(function(require, exports, module) {
 		}
 	});
 
-	Extensions.add('com.foldingtext.editor.treeChange', function (editor, e) {
+	Extensions.addTreeChanged(function (editor, e) {
 		var deltas = e.deltas,
 			deletasLength = deltas.length;
 		for (var i = 0; i < deletasLength; i++) {

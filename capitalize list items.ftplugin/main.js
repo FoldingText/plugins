@@ -4,20 +4,20 @@
 define(function(require, exports, module) {
 	'use strict';
 
-	var Extensions = require('ft/core/extensions');
+	var Extensions = require('ft/core/extensions').Extensions;
 
-	Extensions.add('com.foldingtext.editor.commands', {
+	Extensions.addCommand({
 		name: 'capitalize lists',
-		description: 'Capitalize the first character in each selected list item.',
+		description: 'Capitalize each selected list item.',
 		performCommand: function (editor) {
 			var range = editor.selectedRange(),
 				tree = editor.tree(),
 				type, text;
 
 			tree.beginUpdates();
-			range.forEachLineInRange(function (node) {
+			range.forEachNodeInRange(function (node) {
 				type = node.type();
-				if (type === 'ordered' || type === 'unordered')	{
+				if (type === 'ordered' || type === 'unordered' || type === 'task')	{
 					text = node.text();
 					node.setText(text.charAt(0).toUpperCase() + text.slice(1));
 				}

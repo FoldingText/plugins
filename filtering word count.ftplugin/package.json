@@ -1,0 +1,9 @@
+{
+  "name": "Filtering Word Count",
+  "version": "1.0.0",
+  "description": "Alternative word count implementation that filters out blockquotes from total.",
+  "homepage": "https://github.com/FoldingText/plugins/tree/FoldingText-Dev",
+  "engines": {
+    "foldingtext": ">2.0.0"
+  }
+}

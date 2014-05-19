@@ -1,10 +1,10 @@
 define(function(require, exports, module) {
 	'use strict';
 
-	var Extensions = require('ft/core/extensions'),
+	var Extensions = require('ft/core/extensions').Extensions,
 		DateUtils = require('ft/util/date');
 
-	Extensions.add('com.foldingtext.editor.commands', {
+	Extensions.addCommand({
 		name: 'date',
 		description: 'Insert the current date',
 		performCommand: function (editor) {
@@ -12,7 +12,7 @@ define(function(require, exports, module) {
 		}
 	});
 
-	Extensions.add('com.foldingtext.editor.commands', {
+	Extensions.addCommand({
 		name: 'time',
 		description: 'Insert the current time',
 		performCommand: function (editor) {
