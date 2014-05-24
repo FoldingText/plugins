@@ -1,21 +1,32 @@
-/*
+/**
  * Alternative word count approach that tracks counts per node. This makes it possible
  * to filter certain node types out of the count, and to exclude trailing tags and other
  * syntax from the count.
- *
- * - This word count ignores words in blockquotes
- * - This word count doesn't yet have a visual display, it's just a coding approach example
  */
 define(function(require, exports, module) {
 	'use strict';
 
 	var Extensions = require('ft/core/extensions').Extensions,
 		nodeIDsToLastCount = {},
-		totalWordCount = 0;
+		totalWordCount = 0,
+		element;
+
+	function updateDisplay(editor) {
+		if (!element) {
+			element = document.createElement('div');
+			element.className = 'filteringWordCount';
+			document.body.appendChild(element);
+		}
+
+		var newInnerHTML = totalWordCount + ' Words<br/>';
+		if (newInnerHTML !== element.innerHTML) {
+			element.innerHTML = newInnerHTML;
+		}
+	}
 
 	function updateAndReturnWordCountForNode(node) {
 		var text;
-		if (node.type() != 'blockquote') {
+		if (node.type() !== 'blockquote') {
 			text = node.text();
 		}
 
@@ -56,5 +67,19 @@ define(function(require, exports, module) {
 				totalWordCount += updateAndReturnWordCountForNode(insertedNodes[k]);
 			}
 		}
+
+		updateDisplay(editor);
 	});
+
+	/*jshint multistr:true */
+	Extensions.add('com.foldingtext.editor.styles',
+		'.filteringWordCount {\
+			pointer-events: none;\
+			position: fixed;\
+			bottom: 0.5rem;\
+			left: 0.5rem;\
+			color: @secondaryTextColor;\
+		}'
+	);
+	/*jshint multistr:false */
 });
