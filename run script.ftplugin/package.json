@@ -1,0 +1,10 @@
+{
+  "name": "Run Script",
+  "version": "1.0.0",
+  "description": "Adds command to run the selected text as a Javascript function. See Edit > Run Command…",
+  "homepage": "https://github.com/FoldingText/plugins/tree/FoldingText-Dev",
+  "engines": {
+    "foldingtext": ">2.0.0",
+    "taskpaper": ">3.0.0"
+  }
+}
