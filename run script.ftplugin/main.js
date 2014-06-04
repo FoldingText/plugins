@@ -25,10 +25,4 @@ define(function(require, exports, module) {
 			return result;
 		}
 	});
-
-	Extensions.addInit(function (editor) {
-		editor.addKeyMap({
-			'Cmd-Alt-S' : 'run script'
-		});
-	});
 });
