@@ -1,0 +1,22 @@
+.cm-stopwatch-renderwidget {
+	text-align: right;
+	.button {
+		width: 32px;
+		pointer-events:all;
+		background: rgb(75, 200, 0);
+		-webkit-mask: url(play.svg);
+		-webkit-mask-size: 100% 100%;
+		-webkit-mask-repeat: no-repeat;
+		padding : 0.1rem 0.5rem;
+	} &:hover {
+		cursor: pointer;
+	}
+} & .running {	
+	.button {
+		width: 32px;
+		background: rgb(226, 0, 0);
+		-webkit-mask: url(pause.svg);
+		-webkit-mask-size: 100% 100%;
+		-webkit-mask-repeat: no-repeat;
+	}
+}
