@@ -1,0 +1,9 @@
+{
+  "name": "Speed Up!",
+  "version": "1.0.0",
+  "description": "Write fast! If you pause for more then 5 seconds your document is cleared!!!",
+  "homepage": "https://github.com/FoldingText/plugins/tree/FoldingText-Dev",
+  "engines": {
+    "foldingtext": ">2.0.0"
+  }
+}
