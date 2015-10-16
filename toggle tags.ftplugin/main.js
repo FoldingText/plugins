@@ -1,8 +1,7 @@
 define(function(require, exports, module) {
 	'use strict';
 
-	var Extensions = require('ft/core/extensions').Extensions,
-		DateUtils = require('ft/util/date');
+	var Extensions = require('ft/core/extensions').Extensions;
 
 	function toggleTag(editor, tagName, tagValue) {
 		var tree = editor.tree(),
@@ -28,7 +27,7 @@ define(function(require, exports, module) {
 		name: 'toggleDone',
 		description: 'Toggle @done tag for selected lines.',
 		performCommand: function (editor) {
-			toggleTag(editor, 'done', new Date().format('isoDate'));
+			toggleTag(editor, 'done', new Date().toISOString().substr(0, 10));
 		}
 	});
 
