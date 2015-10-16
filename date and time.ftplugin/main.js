@@ -1,14 +1,13 @@
 define(function(require, exports, module) {
 	'use strict';
 
-	var Extensions = require('ft/core/extensions').Extensions,
-		DateUtils = require('ft/util/date');
+	var Extensions = require('ft/core/extensions').Extensions;
 
 	Extensions.addCommand({
 		name: 'date',
 		description: 'Insert the current date',
 		performCommand: function (editor) {
-			editor.replaceSelection(new Date().format('mediumDate'), 'around');
+			editor.replaceSelection(new Date().toLocaleDateString(), 'around');
 		}
 	});
 
@@ -16,7 +15,7 @@ define(function(require, exports, module) {
 		name: 'time',
 		description: 'Insert the current time',
 		performCommand: function (editor) {
-			editor.replaceSelection(new Date().format('shortTime'), 'around');
+			editor.replaceSelection(new Date().toLocaleTimeString(), 'around');
 		}
 	});
 
