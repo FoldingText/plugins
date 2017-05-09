@@ -1,0 +1,8 @@
+{
+    "name": "Character Count",
+    "version": "1.0.0",
+    "description": "Show character count",
+    "engines": {
+        "foldingtext": ">=2.0.0"
+    }
+}
