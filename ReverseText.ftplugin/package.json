@@ -1,0 +1,17 @@
+{
+  "name": "Reverse Text",
+  "version": "1.0.0",
+  "description": "Adds command to reverse the selected text.",
+  "homepage": "https://github.com/FoldingText/plugins/",
+  "author": "FoldingText",
+  "license": "MIT",
+  "enabled": true,
+  "keywords": [
+    "formatting"
+  ],
+  "packageId": "ReverseText",
+  "engines": {
+    "foldingtext": ">3.0.0",
+    "taskpaper": ">3.0.0"
+  }
+}

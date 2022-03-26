@@ -1,0 +1,18 @@
+{
+  "name": "Capitalize List Items",
+  "version": "1.0.0",
+  "description": "Capitalize each selected list item.",
+  "homepage": "https://github.com/FoldingText/plugins",
+  "author": "FoldingText",
+  "license": "MIT",
+  "enabled": true,
+  "keywords": [
+    "lists",
+    "formatting"
+  ],
+  "packageId": "CapitalizeListItems",
+  "engines": {
+    "foldingtext": ">2.0.0",
+    "taskpaper": ">3.0.0"
+  }
+}

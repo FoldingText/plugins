@@ -1,0 +1,18 @@
+{
+  "name": "Keybindings Example",
+  "version": "1.0.0",
+  "description": "Example plugin to show how to add custom keybinding.",
+  "homepage": "https://github.com/FoldingText/plugins/",
+  "author": "FoldingText",
+  "license": "MIT",
+  "enabled": false,
+  "keywords": [
+    "keyboard",
+    "example"
+  ],
+  "packageId": "ExampleKeyBinding",
+  "engines": {
+    "foldingtext": ">3.0.0",
+    "taskpaper": ">3.0.0"
+  }
+}

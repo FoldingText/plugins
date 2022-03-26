@@ -1,48 +1,69 @@
-define(function(require, exports, module) {
-	'use strict';
-
-	var Extensions = require('ft/core/extensions').Extensions;
-
-	function toggleTag(editor, tagName, tagValue) {
-		var tree = editor.tree(),
-			range = editor.selectedRange(),
-			addTag;
-
-		tree.beginUpdates();
-		range.forEachNodeInRange(function (node) {
-			if (addTag === undefined) {
-				addTag = node.tag(tagName) === undefined ? true : false;
-			}
-
-			if (addTag) {
-				node.addTag(tagName, tagValue);
-			} else {
-				node.removeTag(tagName);
-			}
-		});
-		tree.endUpdates();
-	}
-
-	Extensions.addCommand({
-		name: 'toggleDone',
-		description: 'Toggle @done tag for selected lines.',
-		performCommand: function (editor) {
-			toggleTag(editor, 'done', new Date().toISOString().substr(0, 10));
-		}
-	});
-
-	Extensions.addCommand({
-		name: 'toggleToday',
-		description: 'Toggle @today tag for selected lines.',
-		performCommand: function (editor) {
-			toggleTag(editor, 'today');
-		}
-	});
-
-	Extensions.addInit(function (editor) {
-		editor.addKeyMap({
-			'Cmd-D' : 'toggleDone',
-			'Cmd-T' : 'toggleToday',
-		});
-	});
+Extensions.addCommand({
+    name: 'toggleDone',
+    keymap: 'Cmd-D',
+    description: 'Toggle @done tag for selected lines.',
+    performCommand: (editor)  => {
+        editor.toggleTag('done', new Date().toISOString().substr(0, 10));
+    }
 });
+
+Extensions.addCommand({
+    name: 'toggleToday',
+    keymap: 'Cmd-T',
+    description: 'Toggle @today tag for selected lines.',
+    performCommand: (editor) => {
+        editor.toggleTag('today');
+    }
+});
+
+Extensions.addCommand({
+    name: 'toggleError',
+    keymap: 'Shift-Cmd-E',
+    description: 'Toggle @error tag for selected lines.',
+    performCommand: (editor) => {
+        editor.toggleTag('error');
+    }
+});
+
+Extensions.addCommand({
+    name: 'toggleMonthly',
+    keymap: 'Shift-Cmd-M',
+    description: 'Toggle @monthly tag for selected lines.',
+    performCommand: (editor) => {
+        editor.toggleTag('monthly');
+    }
+});
+
+Extensions.addCommand({
+    name: 'toggleCCMB',
+    keymap: 'Ctrl-C',
+    description: 'Toggle @ccmb tag for selected lines.',
+    performCommand: (editor) => {
+        editor.toggleTag('ccmb');
+    }
+});
+
+Extensions.addCommand({
+    name: 'toggleUSMC',
+    keymap: 'Shift-Cmd-U',
+    description: 'Toggle @usmc tag for selected lines.',
+    performCommand: (editor) => {
+        editor.toggleTag('usmc');
+    }
+});
+
+Extensions.addCommand({
+    name: 'newday',
+    description: 'Insert the current date and make it a day formatted as needed',
+    keymap: 'Shift-Cmd-N',
+    performCommand: (editor) => {
+        var today = new Date().toLocaleDateString(),
+            str   = "# **" + today + "** @day";
+            editor.replaceSelection(str, 'end');
+    }
+});
+
+Extensions.addKeyMap({
+    'Shift-Cmd-T': 'setTheme',
+});
+

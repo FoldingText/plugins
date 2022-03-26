@@ -1,0 +1,18 @@
+{
+  "name": "Toggle Empty Lines",
+  "version": "1.0.0",
+  "description": "Toggle between no empty lines, and every other line being empty.",
+  "homepage": "https://github.com/FoldingText/plugins",
+  "author": "FoldingText",
+  "license": "MIT",
+  "enabled": true,
+  "keywords": [
+    "Formatting",
+    "Utility"
+  ],
+  "packageId": "ToggleEmptyLines",
+  "engines": {
+    "foldingtext": ">3.0.0",
+    "taskpaper": ">3.0.0"
+  }
+}

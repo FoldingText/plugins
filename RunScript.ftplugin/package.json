@@ -1,0 +1,17 @@
+{
+  "name": "Run Script",
+  "version": "1.0.0",
+  "description": "Run the selected text as a Javascript function.",
+  "homepage": "https://github.com/FoldingText/plugins",
+  "author": "FoldingText",
+  "license": "MIT",
+  "enabled": true,
+  "keywords": [
+    "utility",
+    "sdk"
+  ],
+  "engines": {
+    "foldingtext": ">3.0.0",
+    "taskpaper": ">3.0.0"
+  }
+}
